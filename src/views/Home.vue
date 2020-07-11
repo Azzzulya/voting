@@ -35,13 +35,19 @@ export default {
   color: #fff;
   align-items: center;
 }
-.emoticons{
+.emoticons {
   display: flex;
   justify-content: center;
 }
 
 section {
   width: 100%;
-  margin-bottom: 100px;
+}
+.give-your-vote {
+  font-size: 25px;
+}
+.finish {
+  position: absolute;
+  bottom: 20px;
 }
 </style>
