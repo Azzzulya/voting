@@ -13,6 +13,7 @@
 
 <script>
 // @ is an alias to /src
+import moment from "moment";
 
 export default {
   name: "Vote",
@@ -24,8 +25,14 @@ export default {
   },
   methods: {
     vote(e) {
-      var value = e.target.value;
-      localStorage.setItem("vote", value);
+      var voted = e.target.value;
+      var create_at = moment().format("YYYY-MM-DD hh:mm:ss a");
+      var data = {
+        vote: voted,
+        create_at: create_at
+      };
+      var jsonTooString = JSON.stringify(data);
+      localStorage.setItem("data", jsonTooString);
     }
   }
 };
