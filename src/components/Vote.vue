@@ -26,13 +26,14 @@ export default {
   methods: {
     vote(e) {
       var voted = e.target.value;
-      var create_at = moment().format("YYYY-MM-DD hh:mm:ss a");
+      var KeyStorage = moment().format("YYYYMMDDhhmmss ");
+      var create_at = moment().format("YYYY-MM-DD hh:mm:ss ");
       var data = {
         vote: voted,
         create_at: create_at
       };
       var jsonTooString = JSON.stringify(data);
-      localStorage.setItem("data", jsonTooString);
+      localStorage.setItem(KeyStorage, jsonTooString);
     }
   }
 };
