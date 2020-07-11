@@ -7,6 +7,7 @@
       :value="emoticon"
       :disabled="isDisable"
       class="btn-emoticon"
+      :class="{ active: emoticon == emoteClick }"
       @click="vote"
     ></button>
   </div>
@@ -22,13 +23,15 @@ export default {
   data: function() {
     return {
       emoticons: ["very-bad", "bad", "oke", "good", "very-good"],
-      isDisable: false
+      isDisable: false,
+      emoteClick: false
     };
   },
   methods: {
     vote(e) {
       this.isDisable = true;
       var voted = e.target.value;
+      this.emoteClick = voted;
       var KeyStorage = moment().format("YYYYMMDDhhmmss ");
       var create_at = moment().format("YYYY-MM-DD hh:mm:ss ");
       var data = {
@@ -56,12 +59,14 @@ export default {
   outline: none;
   cursor: pointer;
 }
+
 #very-bad {
   background-position: 0px 0px;
 }
 #very-bad:hover {
   background-position: 0px -100px;
 }
+#very-bad.active,
 #very-bad:active {
   background-position: 0px -200px;
 }
@@ -71,6 +76,7 @@ export default {
 #bad:hover {
   background-position: 101px -100px;
 }
+#bad.active,
 #bad:active {
   background-position: 101px -200px;
 }
@@ -80,6 +86,7 @@ export default {
 #oke:hover {
   background-position: 201px -100px;
 }
+#oke.active,
 #oke:active {
   background-position: 201px -200px;
 }
@@ -89,6 +96,7 @@ export default {
 #good:hover {
   background-position: 301px -100px;
 }
+#good.active,
 #good:active {
   background-position: 301px -200px;
 }
@@ -98,6 +106,7 @@ export default {
 #very-good:hover {
   background-position: 401px -100px;
 }
+#very-good.active,
 #very-good:active {
   background-position: 401px -200px;
 }
