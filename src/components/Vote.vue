@@ -5,6 +5,7 @@
       :key="index"
       :id="emoticon"
       :value="emoticon"
+      :disabled="isDisable"
       class="btn-emoticon"
       @click="vote"
     ></button>
@@ -20,11 +21,13 @@ export default {
   components: {},
   data: function() {
     return {
-      emoticons: ["very-bad", "bad", "oke", "good", "very-good"]
+      emoticons: ["very-bad", "bad", "oke", "good", "very-good"],
+      isDisable: false
     };
   },
   methods: {
     vote(e) {
+      this.isDisable = true;
       var voted = e.target.value;
       var KeyStorage = moment().format("YYYYMMDDhhmmss ");
       var create_at = moment().format("YYYY-MM-DD hh:mm:ss ");
