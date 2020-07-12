@@ -10,7 +10,7 @@
     </section>
 
     <section class="finish">
-      <transition name="fade">
+      <transition name="fade" v-on:after-enter="afterClick">
         <h4 v-if="show">Terima kasi telah memberikan penilaian anda</h4>
       </transition>
     </section>
@@ -29,6 +29,9 @@ export default {
   methods: {
     vote() {
       this.show = true;
+    },
+    afterClick() {
+      this.show = false;
     }
   },
   data: function() {
