@@ -19,7 +19,11 @@ import moment from "moment";
 
 export default {
   name: "Vote",
-  components: {},
+  props: {
+    voteProp: {
+      type: Function
+    }
+  },
   data: function() {
     return {
       emoticons: ["very-bad", "bad", "oke", "good", "very-good"],
@@ -28,7 +32,6 @@ export default {
   },
   methods: {
     vote(e) {
-    
       var voted = e.target.value;
       this.emoteClick = voted;
       var KeyStorage = moment().format("YYYYMMDDhhmmss ");
@@ -39,10 +42,12 @@ export default {
       };
       var jsonTooString = JSON.stringify(data);
       localStorage.setItem(KeyStorage, jsonTooString);
+
+      this.voteProp();
     }
   },
-  computed:{
-    isDisbale: function(){
+  computed: {
+    isDisable: function() {
       return this.emoteClick.length === 0 ? false : true;
     }
   }

@@ -5,12 +5,14 @@
         Silahkan berikan penilaian anda terhadap pelayanan kami
       </h3>
       <div class="emoticons">
-        <Vote />
+        <Vote :voteProp="vote" />
       </div>
     </section>
 
     <section class="finish">
-      <h4>Terima kasi telah memberikan penilaian anda</h4>
+      <transition name="fade">
+        <h4 v-if="show">Terima kasi telah memberikan penilaian anda</h4>
+      </transition>
     </section>
   </div>
 </template>
@@ -23,6 +25,16 @@ export default {
   name: "Home",
   components: {
     Vote
+  },
+  methods: {
+    vote() {
+      this.show = true;
+    }
+  },
+  data: function() {
+    return {
+      show: false
+    };
   }
 };
 </script>
