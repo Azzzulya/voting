@@ -32,6 +32,7 @@ export default {
     },
     afterClick() {
       this.show = false;
+      this.$root.$emit("emitProcessDone");
     }
   },
   data: function() {
